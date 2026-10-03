@@ -1,0 +1,239 @@
+/* =========================================================
+   Base theme — carried over from the original landing page.
+   Additions for the multi-page site live in pages.css.
+   ========================================================= */
+:root{
+  --ink:#15131a; --muted:#6b6675; --faint:#9a94a3;
+  --accent:#e23a76; --accent-ink:#bf2c60;
+  --bg:#ffffff; --bg-alt:#faf8fb; --line:#eceaef; --line-strong:#dcd9e1;
+  --maxw:1140px; --read:680px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;font-size:17px;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:var(--accent-ink);text-decoration:none}
+a:hover{text-decoration:underline}
+img,svg{max-width:100%;height:auto;display:block}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- Type ---------- */
+h1,h2,h3{margin:0 0 .55em;color:var(--ink);font-weight:650;letter-spacing:-.02em;line-height:1.18}
+h1{font-size:clamp(2.05rem,7vw,4.3rem);font-weight:680;letter-spacing:-.035em;line-height:1.06}
+h2{font-size:clamp(1.55rem,3vw,2.2rem)}
+h3{font-size:1.06rem;font-weight:650;letter-spacing:-.01em}
+p{margin:0 0 1.1rem}
+.lead{font-size:clamp(1.06rem,1.6vw,1.25rem);color:var(--muted);line-height:1.6;letter-spacing:-.01em}
+.muted{color:var(--muted)}
+.measure{max-width:var(--read)}
+.eyebrow{display:block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 1.1rem}
+.eyebrow .idx{color:var(--faint);margin-right:.55rem}
+
+/* ---------- Buttons / links ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:1rem;line-height:1;letter-spacing:-.01em;
+  padding:.95rem 1.5rem;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease}
+.btn:hover{background:var(--accent-ink);border-color:var(--accent-ink);text-decoration:none;transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn--lg{font-size:1.05rem;padding:1.05rem 1.8rem}
+.btn .arrow{transition:transform .15s ease}
+.btn:hover .arrow{transform:translateX(3px)}
+.link-arrow{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;color:var(--ink);
+  border-bottom:1px solid var(--line-strong);padding-bottom:2px;letter-spacing:-.01em}
+.link-arrow:hover{color:var(--accent-ink);border-color:var(--accent);text-decoration:none}
+
+/* ---------- Header ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.site-header .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding-top:1rem;padding-bottom:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.2rem;color:var(--ink);letter-spacing:-.03em;flex-shrink:0}
+.brand:hover{text-decoration:none}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.brand small{font-size:.66rem;font-weight:600;letter-spacing:.12em;color:var(--faint);text-transform:uppercase;margin-left:.1rem}
+/* nav */
+.nav{display:flex;align-items:center;gap:1.7rem}
+.nav a{color:var(--ink);font-size:.95rem;font-weight:600;letter-spacing:-.01em}
+.nav a:hover{color:var(--accent-ink);text-decoration:none}
+.nav .menu-cta{display:none}
+.header-actions{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.header-actions .btn{padding:.7rem 1.25rem;font-size:.95rem;border-radius:9px}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;padding:0;border:1px solid var(--line-strong);border-radius:9px;background:#fff;color:var(--ink);cursor:pointer}
+.nav-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.nav-toggle svg{width:20px;height:20px}
+
+/* ---------- Sections ---------- */
+section{padding:clamp(3.5rem,8vw,7rem) 0}
+main > section + section{border-top:1px solid var(--line)}
+.band{background:var(--bg-alt)}
+
+/* heads */
+.center-head{max-width:720px;margin:0 auto clamp(2.6rem,5vw,3.6rem);text-align:center}
+.split-head h2,.center-head h2{margin-bottom:.55rem}
+.split-head .lead{margin-bottom:0}
+
+/* ---------- Layout: split aside ---------- */
+.split{display:grid;gap:clamp(2rem,5vw,5rem);align-items:start;grid-template-columns:minmax(250px,320px) 1fr}
+.split--rev{grid-template-columns:1fr minmax(250px,320px)}
+.split--rev .split-head{order:2}
+.split--rev .split-body{order:1}
+.split-head{position:sticky;top:96px}
+
+/* ---------- Grid cells ---------- */
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.cell{background:var(--bg);padding:1.8rem}
+.cell h3{margin-bottom:.45rem}
+.cell p{margin:0;color:var(--muted);font-size:.96rem;line-height:1.6}
+.cell .ic{color:var(--ink);margin-bottom:1rem}
+.cell .ic svg{width:23px;height:23px;stroke-width:1.6}
+
+/* ---------- Stacked / numbered lists ---------- */
+.stack{display:grid;gap:1.7rem}
+.list2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem 2.6rem}
+.item{display:flex;gap:1rem;align-items:flex-start}
+.item .n{flex-shrink:0;font-size:.85rem;font-weight:700;color:var(--accent);min-width:1.7rem;padding-top:.15rem;letter-spacing:.03em}
+.item h3{margin-bottom:.3rem}
+.item p{margin:0;color:var(--muted);font-size:.96rem;line-height:1.6}
+
+/* ---------- Timeline (How it works) ---------- */
+.timeline{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:2.2rem}
+.tl{position:relative;padding-top:1.9rem;border-top:2px solid var(--line-strong)}
+.tl::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.tl .k{counter-increment:s;display:block;font-size:.74rem;font-weight:700;letter-spacing:.12em;color:var(--faint);margin-bottom:.5rem}
+.tl .k::before{content:"STEP " counter(s,decimal-leading-zero)}
+.tl h3{margin-bottom:.35rem}
+.tl p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.6}
+
+/* ---------- Chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.7rem}
+.chips--center{justify-content:center}
+.chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line-strong);border-radius:999px;
+  padding:.6rem 1.05rem;font-weight:600;font-size:.95rem;color:var(--ink);letter-spacing:-.01em}
+.chip svg{width:16px;height:16px;color:var(--accent);stroke-width:1.7}
+
+/* ---------- Comparison ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;max-width:920px;margin:0 auto}
+table.compare{width:100%;border-collapse:collapse;min-width:560px;font-size:.96rem}
+table.compare th,table.compare td{padding:1rem 1.2rem;text-align:left;border-bottom:1px solid var(--line)}
+table.compare thead th{font-weight:650;color:var(--ink);border-bottom:1px solid var(--line-strong);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+table.compare thead th.hl{color:var(--accent)}
+table.compare th[scope="row"]{font-weight:600;color:var(--ink)}
+table.compare td{color:var(--muted)}
+table.compare .col-hl{background:var(--bg-alt);color:var(--ink);font-weight:600}
+table.compare tbody tr:last-child th,table.compare tbody tr:last-child td{border-bottom:0}
+
+/* ---------- Stat band ---------- */
+.stat-band{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg);margin-bottom:3rem}
+.stat-band .s{padding:2rem 1.7rem;border-left:1px solid var(--line)}
+.stat-band .s:first-child{border-left:0}
+.stat-band .num{font-size:clamp(2rem,4vw,2.7rem);font-weight:300;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.stat-band .lbl{display:block;margin-top:.55rem;color:var(--muted);font-size:.88rem;letter-spacing:-.01em}
+
+/* ---------- Quotes ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem}
+.quote{padding-top:1.4rem;border-top:2px solid var(--ink)}
+.quote .stars{color:var(--accent);font-size:.85rem;letter-spacing:.15em;margin-bottom:.9rem}
+.quote p{color:var(--ink);font-size:1rem;line-height:1.6;margin-bottom:1rem}
+.quote .who{font-size:.9rem;color:var(--muted)}
+.quote .who b{color:var(--ink);font-weight:650}
+
+/* ---------- FAQ ---------- */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;font-weight:650;font-size:1.05rem;letter-spacing:-.01em;
+  padding:1.25rem 2.2rem 1.25rem 0;position:relative;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:.2rem;top:50%;width:10px;height:10px;
+  border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);
+  transform:translateY(-65%) rotate(45deg);transition:transform .2s ease}
+.faq details[open] summary::after{transform:translateY(-35%) rotate(225deg)}
+.faq details p{margin:-.2rem 0 1.35rem;color:var(--muted)}
+
+/* ---------- Tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(2,1fr);gap:1.9rem 2.8rem}
+.tip{display:flex;gap:1rem;align-items:flex-start}
+.tip .n{flex-shrink:0;font-size:.85rem;font-weight:700;color:var(--accent);min-width:1.8rem;padding-top:.15rem}
+.tip b{display:block;margin-bottom:.25rem;font-weight:650}
+.tip p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.6}
+
+/* ---------- Hero ---------- */
+.hero{text-align:center;padding-top:clamp(3.5rem,8vw,6rem)}
+.hero .wrap{max-width:1320px}
+.hero .eyebrow{margin-bottom:1.3rem}
+.hero h1{max-width:1040px;margin-left:auto;margin-right:auto;margin-bottom:1.2rem}
+.hero .lead{max-width:680px;margin-left:auto;margin-right:auto;margin-bottom:2rem}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-note{font-size:.92rem;color:var(--faint);margin:0;letter-spacing:-.01em}
+.hero-art{max-width:1080px;margin:clamp(2.6rem,5vw,3.6rem) auto 0;border:1px solid var(--line);border-radius:18px;padding:2rem clamp(1.6rem,4vw,3rem);background:var(--bg-alt)}
+.trust{margin-top:clamp(2.4rem,5vw,3.2rem);padding-top:1.6rem;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem 1.8rem;align-items:center}
+.trust span{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--muted);letter-spacing:-.01em}
+.trust svg{width:17px;height:17px;color:var(--accent);flex-shrink:0}
+
+/* ---------- Final CTA band ---------- */
+.cta-band{text-align:center;max-width:640px;margin:0 auto}
+.cta-band h2{margin-bottom:.7rem}
+.cta-band p{color:var(--muted);margin-bottom:1.8rem;font-size:1.1rem}
+.cta-band .mini{margin:1.2rem 0 0;font-size:.9rem;color:var(--faint)}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line);padding:2.6rem 0 3rem;color:var(--faint);font-size:.84rem;line-height:1.7}
+.site-footer .wrap{max-width:860px}
+.site-footer p{margin:0 0 .85rem}
+.site-footer strong{color:var(--muted);font-weight:650}
+
+/* =========================================================
+   RESPONSIVE — stacking + scale only. No text-align changes,
+   so mobile alignment is identical to desktop.
+   ========================================================= */
+/* tablets / small laptops */
+@media (max-width:900px){
+  .split,.split--rev{grid-template-columns:1fr;gap:2.2rem}
+  .split-head{position:static}
+  .split--rev .split-head{order:0}
+  .split--rev .split-body{order:0}
+  .cols-3{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .stat-band{grid-template-columns:repeat(2,1fr)}
+  .stat-band .s:nth-child(odd){border-left:0}
+  .quotes{grid-template-columns:1fr;gap:2rem}
+  .split-head .btn{width:100%;justify-content:center}
+  /* collapse nav into a hamburger dropdown */
+  .nav-toggle{display:inline-flex}
+  .nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+       background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;
+       box-shadow:0 14px 26px rgba(21,19,26,.08);padding:.4rem 0;display:none}
+  .nav.open{display:flex}
+  .nav a:not(.menu-cta){padding:.95rem 28px;font-size:1rem;border-bottom:1px solid var(--line)}
+  .nav a:not(.menu-cta):last-of-type{border-bottom:0}
+}
+/* phones */
+@media (max-width:600px){
+  body{font-size:16px}
+  section{padding:2.9rem 0}
+  .wrap{padding:0 18px}
+  .cols-3,.cols-2,.list2,.timeline,.stat-band,.tips{grid-template-columns:1fr}
+  .stat-band .s{border-left:0;border-top:1px solid var(--line)}
+  .stat-band .s:first-child{border-top:0}
+  .brand small{display:none}
+  .btn{white-space:normal;max-width:100%;text-align:center}
+  .hero-cta{gap:1rem}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .hero-art{padding:1.3rem}
+  .center-head{margin-bottom:2.2rem}
+  .stack,.list2,.tips{gap:1.6rem}
+  /* on phones: hide the standalone header button, show the CTA inside the menu */
+  .header-actions > .btn{display:none}
+  .nav a:not(.menu-cta){padding-left:18px;padding-right:18px}
+  .nav .menu-cta{display:flex;justify-content:center;width:auto;margin:.7rem 18px .8rem}
+}
+/* small phones */
+@media (max-width:380px){
+  .wrap{padding:0 15px}
+  .nav a:not(.menu-cta){padding-left:15px;padding-right:15px}
+  .nav .menu-cta{margin-left:15px;margin-right:15px}
+  .chip{font-size:.9rem;padding:.55rem .9rem}
+}
