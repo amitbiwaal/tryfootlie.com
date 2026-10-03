@@ -22,7 +22,11 @@ export function pageMetadata({
   modifiedTime?: string
   noindex?: boolean
 }): Metadata {
-  const images = image ? [{ url: image.url, alt: image.alt || title }] : undefined
+  // A page that sets its own `openGraph` no longer inherits the site-wide share image, so pages
+  // without a cover fall back to it explicitly — otherwise links shared from them have no picture.
+  const images = image
+    ? [{ url: image.url, alt: image.alt || title }]
+    : [{ url: '/opengraph-image', width: 1200, height: 630, alt: `${site.name} — sell feet pics online safely and anonymously` }]
   return {
     title,
     description,
@@ -36,14 +40,14 @@ export function pageMetadata({
       url: path,
       title,
       description,
-      ...(images ? { images } : {}),
+      images,
       ...(type === 'article' ? { publishedTime, modifiedTime } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      ...(images ? { images: images.map((i) => i.url) } : {}),
+      images: images.map((i) => i.url),
     },
   }
 }

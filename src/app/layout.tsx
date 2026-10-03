@@ -41,7 +41,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // In-page anchor links scroll smoothly (globals.css); this keeps page-to-page navigation instant.
+    <html lang="en" data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   )

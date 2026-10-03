@@ -44,7 +44,7 @@ export default async function HomePage() {
           '@type': 'Organization',
           name: site.name,
           url: absoluteUrl('/'),
-          logo: absoluteUrl('/icon.svg'),
+          logo: absoluteUrl('/icon-512.png'),
           description:
             'Footly is an independent guide that helps creators sell feet pics online safely, anonymously, and profitably.',
         }}

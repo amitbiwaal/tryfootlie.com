@@ -58,7 +58,7 @@ export default async function PostPage({ params }: Params) {
           publisher: {
             '@type': 'Organization',
             name: site.name,
-            logo: { '@type': 'ImageObject', url: absoluteUrl('/icon.svg') },
+            logo: { '@type': 'ImageObject', url: absoluteUrl('/icon-512.png') },
           },
           image: post.coverImage ? absoluteUrl(post.coverImage) : absoluteUrl('/opengraph-image'),
           keywords: post.tags.join(', '),
